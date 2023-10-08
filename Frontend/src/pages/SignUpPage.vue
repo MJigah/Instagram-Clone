@@ -85,7 +85,15 @@
                   />
                 </div>
               </div>
-
+              <q-circular-progress
+                v-if="userLoading"
+                indeterminate
+                rounded
+                size="32px"
+                color="blue"
+                style="width: 100%"
+                class="q-my-md flex justify-center"
+              />
               <q-btn
                 class="q-my-md"
                 color="primary"
@@ -115,9 +123,11 @@ import Footer from "../components/Footer.vue";
 import { ref } from "vue";
 import { useUserStore } from "../stores/user";
 import { useQuasar } from "quasar";
+import { storeToRefs } from "pinia";
 
 const $q = useQuasar();
 const userStore = useUserStore();
+const { user, userError, userLoading, userSuccess, userMessage, getUserDetails } = storeToRefs(userStore);
 const { registerUser } = userStore;
 const name = ref("");
 const username = ref("");
@@ -133,6 +143,7 @@ export default {
   },
   setup() {
     return {
+      userLoading,
       name,
       username,
       email,
