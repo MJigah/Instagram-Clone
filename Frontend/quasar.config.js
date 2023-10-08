@@ -9,7 +9,6 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const { configure } = require("quasar/wrappers");
-console.log(process.env)
 module.exports = configure(function (ctx) {
   return {
     // https://v2.quasar.dev/quasar-cli-webpack/supporting-ts
@@ -47,7 +46,7 @@ module.exports = configure(function (ctx) {
       // transpile: false,
       // publicPath: '/',
       env: {
-        API_URL: ctx.dev ? 'http://localhost:8000/api/' : 'https://loan-backend.onrender.com/api'
+        API_URL: ctx.dev ? 'http://localhost:8000/api/' : 'https://loan-backend.onrender.com/api/'
       },
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).

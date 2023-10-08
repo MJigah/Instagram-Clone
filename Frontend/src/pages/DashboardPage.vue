@@ -175,7 +175,7 @@
           <div class="column" style="height: 100%">
             <div
               class="col flex items-center justify-center"
-              style="width: 100%; height: 100%"
+              style="width: 100%; height: 30%"
             >
               <div class="row" style="width: 65%; height: 350px">
                 <div class="col flex items-center justify-center">
@@ -228,7 +228,7 @@
                 </div>
               </div>
             </div>
-            <div class="col custom-border-top">
+            <div class="col-9 custom-border-top">
               <q-card class="bg-transparent no-box-shadow no-shadow">
                 <q-tabs
                   v-model="tab"
@@ -282,7 +282,7 @@
                       </div>
                     </div>
                     <div v-else-if="userPosts.length > 0" class="row">
-                      <div v-for="post in userPosts" :key="post._id" class="col">
+                      <div v-for="post in userPosts" :key="post._id" class="col" style="width: 27%">
                         <q-card class="my-card" flat bordered>
                           <img :src="post.posts[0].url" />
 
