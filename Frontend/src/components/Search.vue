@@ -29,27 +29,7 @@
                   <!-- <q-linear-progress :value="0.6" color="pink" /> -->
     
                   <q-card-section class="row items-center no-wrap">
-                    <div class="flex" style="width: 100%; height: 600px">
-                      <div style="width: 100%">
-                        <p class="text-h4 q-pa-md">Search</p>
-                        <q-input
-                          color="black"
-                          filled
-                          v-model="search"
-                          label="Search"
-                        >
-                          <template v-slot:append>
-                            <q-icon name="search" />
-                          </template>
-                        </q-input>
-                      </div>
-                      <div
-                        class="flex items-center justify-center"
-                        style="height: 100%; width: 100%"
-                      >
-                        <p class="text-caption">No Recent Searches</p>
-                      </div>
-                    </div>
+                    <SearchModal />
                   </q-card-section>
                 </q-card>
               </q-dialog>
@@ -72,7 +52,8 @@ import { ref } from "vue";
 import { useUserStore } from "stores/user";
 import { storeToRefs } from "pinia";
 import { useQuasar } from "quasar";
-import AddPost from "./AddPost.vue"
+import AddPost from "./AddPost.vue";
+import SearchModal from "./SearchModal.vue";
 
 const $q = useQuasar();
 const userStore = useUserStore();
@@ -100,7 +81,7 @@ const caption = ref("Meeeeeeeeeeeee");
 const location = ref("Nigeria");
 
 export default{
-  components: { AddPost },
+  components: { AddPost, SearchModal },
   setup(){
     return {
       dialog,
