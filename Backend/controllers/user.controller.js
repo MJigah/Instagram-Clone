@@ -248,6 +248,29 @@ const getUserPosts = async(req, res) => {
   })
 }
 
+const getUserByUsername = async(req, res) => {
+  const searchText = req.query.text;
+  try {
+    if(!searchText){
+      return res.status(404).json("User not found!");
+    }
+    const regex = new RegExp(searchText, 'i');
+    const getUsers = await User.find({
+      username: regex
+    }).select("username avatar _id name");
+    if(!getUsers){
+      return res.status(404).json("User not found!");
+    }
+    res.status(200).json({
+      message: "Users found!",
+      data: getUsers
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message: "A Server Error Ocuured!"})
+  }
+}
+
 module.exports = {
   uploadDP,
   uploadPosts,
@@ -257,4 +280,5 @@ module.exports = {
   followAndUnfollowUser,
   getUserDetails,
   getUserPosts,
+  getUserByUsername,
 };

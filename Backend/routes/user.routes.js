@@ -9,11 +9,13 @@ const {
   followAndUnfollowUser,
   getUserDetails,
   getUserPosts,
+  getUserByUsername,
 } = require("../controllers/user.controller");
 const { protect } = require("../middlewares/token.middleware");
 const router = express.Router();
 
 router.get("/get", protect, getUserDetails);
+router.get("/search", protect, getUserByUsername);
 router.get("/post/get", protect, getUserPosts);
 router.post("/display-pic", protect, handler, uploadDP);
 router.post("/posts", protect, postsHandler, uploadPosts);

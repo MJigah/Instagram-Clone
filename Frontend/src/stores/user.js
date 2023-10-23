@@ -10,6 +10,8 @@ const API_URL = process.env.API_URL || "http://localhost:8000/api/";
 export const useUserStore = defineStore('user', {
   state: () => ({
     user: {},
+    recentSearch: [],
+    userSearch: [],
     userPosts: [],
     userLoading: false,
     userSuccess: false,
@@ -218,10 +220,32 @@ export const useUserStore = defineStore('user', {
       await localStorage.setItem("userTokens", JSON.stringify(newTokenData));
       this.router.push("/login");
     },
+    async searchUserName(searchData){
+      try {
+        this.userLoading = true;
+        const fetchStorage = await localStorage.getItem("userTokens");
+        const fetchToken = JSON.parse(fetchStorage);
+        var { value } = fetchToken;
+        value = value ? value : "";
+        const config = {
+          headers: { 'Authorization': 'Bearer ' + value }
+        }
+        const response = await axios.get(`${API_URL}user/search?text=${searchData}`, config);
+        console.log(response.data.data);
+        this.userSearch = response.data.data;
+        this.userLoading = false;
+        this.userSuccess = true;
+      } catch (error) {
+        this.userLoading = false;
+        this.userError = true;
+        console.log(error)
+      }
+    },
     userReset(){
       this.userError = false;
       this.userLoading = false;
       this.userSuccess = false;
+      this.userSearch = [];
     },
   }
 })
