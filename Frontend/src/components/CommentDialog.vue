@@ -1,10 +1,10 @@
 <template>
-  <q-card-section style="height: 100%; width: 100%">
+  <q-card-section style="height: 100%; width: 100%" :style="$q.screen.xs ? 'height:50%' : ''">
     <div class="row" style="height: 100%; width: 100%">
       <div class="col q-mr-md" style="border-right: 1px solid rgb(208, 208, 208); height: 100%">
         <q-card-section
         class="q-pa-none q-ma-md"
-        style="height: 600px"
+        :style="$q.screen.xs ? '' : 'height: 600px'"
       >
         <!-- <q-skeleton class="bg-grey" height="100%" square /> -->
         <img
@@ -21,8 +21,8 @@
       </div>
       <div class="col">
         <div class="column" style="height: 100%">
-          <div class="col-1 row justify-between q-px-md q-pb-sm">
-            <div class="text-h6">
+          <div class="" :class="{'col-1 q-pt-sm row': $q.screen.xs, 'col-1 row justify-between q-px-md q-pb-sm': !$q.screen.xs}" :style="$q.screen.xs && 'height: 55px'">
+            <div class="text-h6" :style="$q.screen.xs && 'width: 80%'">
               <div class="row">
                 <!-- <q-skeleton bordered type="circle" /> -->
                 <q-avatar size="40px">
@@ -63,7 +63,7 @@
                   {{ post.caption }}
                   </p>
                 </div>
-                <div class="col">
+                <div class="col" :style="$q.screen.xs && 'q-my-md'">
                   <q-scroll-area style="height: 100%; max-width: 100%;">
                     <div v-for="(comment, index) in post.comments" :key="index" class="flex row justify-between q-my-md">
                       <div class="row">

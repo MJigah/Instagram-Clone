@@ -1,40 +1,21 @@
 <template>
   <q-page>
+    <Header />
     <div class="xs column" style="height: 100vh">
-      <div class="col-1">
-        <div class="flex row items-center justify-center q-py-lg q-px-lg">
-          <div class="col text-left text-weight-light">
-            <a href="/">Cancel</a>
-          </div>
-          <div class="col text-center text-weight-medium">
-            Recents
-            <q-icon name="keyboard_arrow_down" />
-          </div>
-          <div class="col text-right text-blue-6">Next</div>
-        </div>
-      </div>
-      <div class="col-6 custom-border">.col-6</div>
-      <div class="col custom-border">Auto</div>
-      <div
-        class="col-1 custom-border flex items-center justify-center"
-        style="height: 50px"
-      >
-        <div
-          class="flex row items-center justify-between q-pa-xs"
-          style="width: 100%"
-        >
-          <div class="col text-center text-weight-medium">Library</div>
-          <div class="col text-center text-grey-6">Photo</div>
-          <div class="col text-center text-grey-6">Video</div>
-        </div>
-      </div>
+      <AddPost />
     </div>
+    <Footer />
   </q-page>
 </template>
 
 <script>
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
+import AddPost from "../components/AddPost.vue";
+
 export default {
   name: "CreatePage",
+  components: { Header, Footer, AddPost },
 };
 </script>
 

@@ -3,7 +3,7 @@
     <Header />
     <div class="xs q-pa-xs example-column-variable-width">
       <div class="column" style="height: 100vh">
-        <div class="col q-my-md" style="max-height: 2.4rem; width: 400px">
+        <div class="col q-my-md" style="max-height: 2.4rem; width: 100%">
           <div class="row">
             <div class="col-11">
               <div class="q-gutter-y-md column" style="max-width: 100%">
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="col" style="max-height: 3.4rem">
-          <q-scroll-area visible="false" style="height: 45px; max-width: 400px">
+          <q-scroll-area visible="false" style="height: 45px; max-width: 550px">
             <div class="row no-wrap q-my-xs">
               <div class="col-auto q-mr-sm">
                 <a href="#" class="q-px-sm q-py-xs border-1 rounded-borders">

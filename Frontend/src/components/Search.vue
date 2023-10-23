@@ -54,108 +54,7 @@
                 </q-card>
               </q-dialog>
               <q-dialog v-model="addPost">
-                <q-card
-                  v-if="step === 'step-1'"
-                  style="height: 800px; width: 500px"
-                >
-                  <q-card-section class="row items-center q-pb-none">
-                    <div class="text-h6">Create New Post</div>
-                    <q-space />
-                    <q-btn icon="close" flat round dense v-close-popup />
-                  </q-card-section>
-    
-                  <q-card-section
-                    class="flex items-center justify-between q-pa-md"
-                    style="height: 70px"
-                  >
-                    <q-file
-                      class="q-pa-none"
-                      style="width: 250px"
-                      @input="previewImage"
-                      type="file"
-                      clearable
-                      color="blue"
-                      standout
-                      bottom-slots
-                      @clear="resetImage"
-                      v-model="fileUpload"
-                      label="Upload Image"
-                      counter
-                    >
-                      <template v-slot:prepend>
-                        <q-icon name="attach_file" />
-                      </template>
-                    </q-file>
-                    <q-btn label="Next" @click="nextStep" />
-                  </q-card-section>
-                  <q-card-section
-                    v-if="preview"
-                    style="width: 100%; margin-top: 40px"
-                    class="flex items-center justify-center"
-                  >
-                    <img
-                      :src="preview"
-                      style="width: 400px; height: auto; object-fit: cover"
-                      class="img-fluid"
-                    />
-                    <div
-                      class="flex items-center justify-between q-mx-md"
-                      style="width: 100%"
-                    >
-                      <p class="mb-0">file name: {{ image.name }}</p>
-                      <p class="mb-0">size: {{ image.size / 1024 }}KB</p>
-                    </div>
-                  </q-card-section>
-                </q-card>
-                <q-card
-                  v-else-if="step === 'step-2'"
-                  style="height: 800px; width: 500px"
-                >
-                  <q-card-section class="row items-center q-pb-none">
-                    <div class="text-h6 text-black">
-                      <q-icon
-                        class="cursor-pointer"
-                        name="keyboard_backspace"
-                        @click="prevStep"
-                        size="2rem"
-                      />
-                    </div>
-                    <q-space />
-                    <q-btn icon="close" flat round dense v-close-popup />
-                  </q-card-section>
-                  <q-card-section>
-                    <q-input
-                      class="q-my-md"
-                      outlined
-                      v-model="caption"
-                      label="Caption"
-                    />
-                    <q-input
-                      class="q-my-md"
-                      outlined
-                      v-model="location"
-                      label="Location"
-                    />
-                    <q-circular-progress
-                    v-if="userLoading"
-                    indeterminate
-                    rounded
-                    size="32px"
-                    color="blue"
-                    style="width: 100%"
-                    class="q-my-md flex justify-center"
-                    />
-                    <q-btn
-                    v-else
-                      class="q-my-md"
-                      style="width: 100%"
-                      outline
-                      color="primary"
-                      @click="postUpload"
-                      label="Post"
-                    />
-                  </q-card-section>
-                </q-card>
+                  <AddPost />
               </q-dialog>
             </div>
             <div class="col">
@@ -173,6 +72,7 @@ import { ref } from "vue";
 import { useUserStore } from "stores/user";
 import { storeToRefs } from "pinia";
 import { useQuasar } from "quasar";
+import AddPost from "./AddPost.vue"
 
 const $q = useQuasar();
 const userStore = useUserStore();
@@ -200,6 +100,7 @@ const caption = ref("Meeeeeeeeeeeee");
 const location = ref("Nigeria");
 
 export default{
+  components: { AddPost },
   setup(){
     return {
       dialog,

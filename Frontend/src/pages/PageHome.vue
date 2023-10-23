@@ -4,15 +4,18 @@
       <div class="col" style="height: 100vh">
         <div class="column" style="height: 100%">
           <div class="col-2 justify-center q-mx-lg q-mt-lg">
-            <div class="q-pa-md">
-              <q-scroll-area style="height: 130px; max-width: 790px">
+            <div :class="{'q-pa-sm' : $q.screen.xs, 'q-pa-md' : !$q.screen.xs}">
+              <q-scroll-area 
+              :style="!$q.screen.xs ? 'height: 130px; max-width: 790px;': 'height: 90px;'"
+                >
                 <div
                   class="row no-wrap flex justify-center align-items-center q-mb-lg"
+                  :class="{'q-mb-xs' : $q.screen.xs}"
                 >
                   <div
                     v-for="image in images"
                     :key="image.id"
-                    style="width: 100px; height: 100px; background-color: #fff"
+                    style="width: 100px; height: 100px;"
                     class="q-pa-sm"
                   >
                     <div
@@ -29,7 +32,7 @@
               </q-scroll-area>
             </div>
           </div>
-          <div class="col" style="height: auto; background-color: pink">
+          <div class="col" style="height: auto; background-color: white">
             <q-scroll-area
               style="height: 100%; max-width: 100%"
               class="q-pa-sm custom-center"
@@ -50,7 +53,7 @@
                   v-for="postData in getPostsData"
                   :key="postData.id"
                   class="col"
-                  style="width: 80%"
+                  style="width: 90%"
                 >
                   <TimelinePost
                     :postData="postData"
@@ -244,7 +247,7 @@ const postliked = ref(false);
 const position = ref("left");
 const text = ref("");
 const search = ref("");
-const dialogHeight = ref("md");
+const dialogHeight = ref("sm");
 const dialogContent = ref({});
 export default {
   name: "PageHome",
