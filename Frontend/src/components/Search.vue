@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="md">
+    <div class="">
       <div class="q-py-md" style="height: 100vh; width: 100%">
-        <a class="text-grand-hotel text-bold text-h4 custom-link" href="#"
+        <a v-show="!$q.screen.sm" class="text-grand-hotel text-bold text-h4 custom-link" href="#"
           >Instagram</a
         >
         <q-tabs v-model="tab" vertical class="text-black q-pt-lg">
@@ -10,18 +10,18 @@
             <div class="col-10">
               <a href="#/" class="custom-link">
                 <q-tab class="flex flex-row" name="home" icon="home">
-                  <p class="text-caption">home</p>
+                  <p v-show="!$q.screen.sm" class="text-caption">home</p>
                 </q-tab>
               </a>
               <q-tab name="search" icon="search" @click="open('left')">
-                <p class="text-caption">search</p>
+                <p v-show="!$q.screen.sm" class="text-caption">search</p>
               </q-tab>
               <q-tab name="add_box" icon="add_box" @click="addPost = true">
-                <p class="text-caption">Create</p>
+                <p v-show="!$q.screen.sm" class="text-caption">Create</p>
               </q-tab>
               <a href="#/home" class="custom-link">
                 <q-tab name="perm_identity" icon="perm_identity">
-                  <p class="text-caption">Profile</p>
+                  <p v-show="!$q.screen.sm" class="text-caption">Profile</p>
                 </q-tab>
               </a>
               <q-dialog v-model="dialog" :position="position">

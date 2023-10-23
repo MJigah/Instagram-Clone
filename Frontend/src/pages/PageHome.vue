@@ -70,10 +70,7 @@
       </div>
       <Footer />
     </div>
-    <div class="sm">
-      <Footer />
-    </div>
-    <div class="md" style="height: 100vh">
+    <div class="" style="height: 100vh">
       <div class="row" style="height: 100vh">
         <div
           class="col-2 q-px-md"
@@ -82,6 +79,7 @@
             height: 100%;
             border-right: 1px solid rgb(111, 111, 111);
           "
+          :style="$q.screen.sm && 'width: 80px'"
         >
           <Search />
         </div>
