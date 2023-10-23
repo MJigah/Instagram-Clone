@@ -1,12 +1,6 @@
 <template>
   <q-page>
-    <div class="xs">
-      <Footer />
-    </div>
-    <div class="sm">
-      <Footer />
-    </div>
-    <div class="md">
+    <div>
       <div class="flex items-center justify-center" style="height: 100vh">
         <div
           class="column q-px-md q-py-lg"

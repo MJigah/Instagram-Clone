@@ -8,7 +8,7 @@
               <div class="row q-py-lg" style="width: 100%">
                 <div class="col-7 text-right text-weight-medium">
                   <q-icon name="lock" />
-                  afimm_
+                  {{ user?.username }}
                   <q-icon name="keyboard_arrow_down" />
                 </div>
                 <div class="col-5 text-right q-px-md">
@@ -29,13 +29,13 @@
                 </div>
                 <div class="col">
                   <div class="column flex items-center justify-center">
-                    <div class="col text-weight-medium">54</div>
+                    <div class="col text-weight-medium">{{ userPosts?.length}}</div>
                     <div class="col text-weight-light text-caption">Posts</div>
                   </div>
                 </div>
                 <div class="col">
                   <div class="column flex items-center justify-center">
-                    <div class="col text-weight-medium">834</div>
+                    <div class="col text-weight-medium">{{ user?.followers && user?.followers.length}}</div>
                     <div class="col text-weight-light text-caption">
                       Followers
                     </div>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col">
                   <div class="column flex items-center justify-center">
-                    <div class="col text-weight-medium">162</div>
+                    <div class="col text-weight-medium">{{ user?.followings && user?.followings.length}}</div>
                     <div class="col text-weight-light text-caption">
                       Following
                     </div>
@@ -51,11 +51,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-4 q-mx-md">
-              <div class="column">
-                <div class="col text-caption">Quasar dev</div>
-                <div class="col text-caption">Frontend Developer</div>
-                <div class="col text-caption">Aspiring Tech bro...</div>
+            <div class="col-4 q-mx-md flex items-center">
+              <div class="column" style="width: 100%;">
+                <div class="col text-caption">{{ user?.bio }}</div>
                 <q-btn
                   size=".7rem"
                   no-caps
@@ -149,16 +147,7 @@
           </div>
         </div>
         <div class="col-7 q-py-md">
-          <div class="row">
-            <div class="col flex items-center justify-center">.col</div>
-            <div class="col flex items-center justify-center">.col</div>
-            <div class="col flex items-center justify-center">.col</div>
-          </div>
-          <div class="row">
-            <div class="col flex items-center justify-center">.col</div>
-            <div class="col flex items-center justify-center">.col</div>
-            <div class="col flex items-center justify-center">.col</div>
-          </div>
+          <PostsTab />
         </div>
       </div>
       <Footer />
@@ -229,99 +218,7 @@
               </div>
             </div>
             <div class="col-5 custom-border-top">
-              <q-card class="bg-transparent no-box-shadow no-shadow">
-                <q-tabs
-                  v-model="tab"
-                  dense
-                  class="text-grey"
-                  active-color="black"
-                  indicator-color="black"
-                  inline-label
-                  narrow-indicator
-                >
-                  <q-tab name="posts" icon="grid_on" label="Posts" />
-                  <q-tab name="saved" icon="turned_in_not" label="Saved" />
-                  <q-tab name="tags" icon="portrait" label="Tagged" />
-                </q-tabs>
-
-                <q-tab-panels
-                  class="flex bg-transparent no-shadow no-box-shadow q-mx-md justify-center"
-                  v-model="tab"
-                  animated
-                >
-                  <q-tab-panel name="posts">
-                    <div v-if="userLoading">
-                      <div class="row">
-                        <div class="col">
-                          <div class="">
-                            <q-card style="max-width: 300px">
-                              <q-item>
-                                <q-item-section avatar>
-                                  <q-skeleton type="QAvatar" />
-                                </q-item-section>
-                        
-                                <q-item-section>
-                                  <q-item-label>
-                                    <q-skeleton type="text" />
-                                  </q-item-label>
-                                  <q-item-label caption>
-                                    <q-skeleton type="text" />
-                                  </q-item-label>
-                                </q-item-section>
-                              </q-item>
-                        
-                              <q-skeleton height="200px" square />
-                        
-                              <q-card-actions align="right" class="q-gutter-md">
-                                <q-skeleton type="QBtn" />
-                                <q-skeleton type="QBtn" />
-                              </q-card-actions>
-                            </q-card>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div v-else-if="userPosts.length > 0" class="row">
-                      <div v-for="post in userPosts" :key="post._id" class="col-3" style="width: 27%">
-                        <q-card class="my-card" flat bordered>
-                          <img :src="post.posts[0].url" />
-
-                          <q-card-actions align="right">
-                            <q-btn flat round color="red" icon="favorite" />
-                            <q-btn flat round color="teal" icon="bookmark" />
-                            <q-btn flat round color="primary" icon="share" />
-                          </q-card-actions>
-                        </q-card>
-                      </div>
-                    </div>
-                    <div v-else class="q-ma-md text-center">
-                      You have No Posts!
-                    </div>
-                  </q-tab-panel>
-
-                  <q-tab-panel
-                    class="bg-transparent no-shadow no-box-shadow"
-                    name="saved"
-                  >
-                    <div class="row">
-                      <div class="col">.col</div>
-                      <div class="col">.col</div>
-                      <div class="col">.col</div>
-                    </div>
-                  </q-tab-panel>
-
-                  <q-tab-panel
-                    class="bg-transparent no-shadow no-box-shadow"
-                    name="tags"
-                  >
-                    <div class="row">
-                      <div class="col">.col</div>
-                      <div class="col">.col</div>
-                      <div class="col">.col</div>
-                    </div>
-                  </q-tab-panel>
-                </q-tab-panels>
-              </q-card>
+              <PostsTab />
             </div>
           </div>
         </div>
@@ -333,6 +230,7 @@
 <script>
 import Footer from "../components/Footer.vue";
 import Search from "../components/Search.vue";
+import PostsTab from '../components/PostsTab.vue';
 import { ref } from "vue";
 import { useUserStore } from "../stores/user";
 import { storeToRefs } from "pinia";
@@ -345,10 +243,10 @@ export default {
   components: {
     Footer,
     Search,
+    PostsTab,
   },
   data() {
     return {
-      tab: ref("posts"),
       user,
       userPosts,
       userLoading,
