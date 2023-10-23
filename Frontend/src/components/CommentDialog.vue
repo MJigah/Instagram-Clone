@@ -1,5 +1,5 @@
 <template>
-  <q-card-section style="height: 100%; width: 100%" :style="$q.screen.xs ? 'height:50%' : ''">
+  <q-card-section style="height: 100%; width: 100%" :style="$q.screen.xs ? 'height:100%' : ''">
     <div class="row" style="height: 100%; width: 100%">
       <div class="col q-mr-md" style="border-right: 1px solid rgb(208, 208, 208); height: 100%" :style="$q.screen.xs && 'display: none'">
         <q-card-section

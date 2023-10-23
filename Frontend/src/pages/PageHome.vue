@@ -4,26 +4,26 @@
       <Header />
       <div class="col" style="height: 100vh">
         <div class="column" style="height: 100%">
-          <div class="col-2 justify-center q-mx-sm">
+          <div class="col-1 justify-center q-mx-sm q-mb-sm">
             <div :class="{'q-pa-sm' : $q.screen.xs, 'q-pa-md' : !$q.screen.xs}">
               <q-scroll-area 
               :style="!$q.screen.xs ? 'height: 130px; max-width: 790px;': 'height: 90px;'"
                 >
                 <div
-                  class="row no-wrap flex justify-center align-items-center q-mb-lg"
-                  :class="{'q-mb-xs' : $q.screen.xs}"
+                  class="row no-wrap flex justify-center align-items-center"
+                  style="height: 90px;"
                 >
                   <div
                     v-for="image in images"
                     :key="image.id"
-                    style="width: 100px; height: 40px;"
+                    style="width: 100px; height: 100%;"
                     class="q-pa-sm"
                   >
                     <div
                       class="flex justify-center align-items-center"
                       style="width: 66px"
                     >
-                      <q-avatar size="60px">
+                      <q-avatar size="50px">
                         <img :src="image.url" />
                       </q-avatar>
                       <p>name</p>
@@ -54,7 +54,7 @@
                   v-for="postData in getPostsData"
                   :key="postData.id"
                   class="col"
-                  style="width: 90%"
+                  style="width: 100%"
                 >
                   <TimelinePost
                     :postData="postData"

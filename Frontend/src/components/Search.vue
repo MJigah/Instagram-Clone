@@ -79,6 +79,7 @@ const stepState = ref(1);
 const step = ref("step-1");
 const caption = ref("Meeeeeeeeeeeee");
 const location = ref("Nigeria");
+const tab = ref("");
 
 export default{
   components: { AddPost, SearchModal },
@@ -87,6 +88,7 @@ export default{
       dialog,
       fileUpload,
       image,
+      tab,
       preview,
       commentDialog,
       addPost,

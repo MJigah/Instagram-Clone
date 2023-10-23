@@ -27,7 +27,11 @@ import {ref} from "vue";
 const search = ref("");
     export default {
         name: 'SearchModal', 
-        search,  
+        setup(){
+          return{
+            search,  
+          }
+        }
     }
 </script>
 

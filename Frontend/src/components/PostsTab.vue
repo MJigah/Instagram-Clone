@@ -4,11 +4,7 @@
       v-model="tab"
       dense
       class="text-grey"
-      :class="{ 'justify-around': $q.screen.xs }"
-      :style="
-        $q.screen.xs &&
-        'border-top: 1px solid grey; border-bottom: 1px solid grey;'
-      "
+      :class="{ 'justify-around border-y': $q.screen.xs }"
       active-color="black"
       indicator-color="black"
       inline-label
@@ -135,6 +131,11 @@ export default {
 </script>
 
 <style lang="scss">
+.border-y{
+  border-top: 1px solid rgb(191, 191, 191) !important;
+  border-bottom: 1px solid rgb(191, 191, 191) !important;
+}
+
 .q-tabs--not-scrollable .q-tabs__content {
   justify-content: space-evenly;
 }

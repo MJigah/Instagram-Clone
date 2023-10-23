@@ -67,7 +67,7 @@
             </div>
             <div class="col">
               <q-scroll-area
-                visible="false"
+                :visible="false"
                 style="height: 90px; max-width: 98%"
               >
                 <div class="row no-wrap q-my-xs q-mx-md">
