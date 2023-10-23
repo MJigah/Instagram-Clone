@@ -70,7 +70,7 @@
       </div>
       <Footer />
     </div>
-    <div class="" style="height: 100vh">
+    <div class="" style="height: 100vh" v-show="!$q.screen.xs">
       <div class="row" style="height: 100vh">
         <div
           class="col-2 q-px-md"
