@@ -1,9 +1,10 @@
 <template>
   <q-page>
     <div class="xs">
+      <Header />
       <div class="col" style="height: 100vh">
         <div class="column" style="height: 100%">
-          <div class="col-2 justify-center q-mx-lg q-mt-lg">
+          <div class="col-2 justify-center q-mx-sm">
             <div :class="{'q-pa-sm' : $q.screen.xs, 'q-pa-md' : !$q.screen.xs}">
               <q-scroll-area 
               :style="!$q.screen.xs ? 'height: 130px; max-width: 790px;': 'height: 90px;'"
@@ -15,7 +16,7 @@
                   <div
                     v-for="image in images"
                     :key="image.id"
-                    style="width: 100px; height: 100px;"
+                    style="width: 100px; height: 40px;"
                     class="q-pa-sm"
                   >
                     <div
@@ -99,7 +100,7 @@
                           :key="image.id"
                           style="
                             width: 100px;
-                            height: 100px;
+                            height: 60px;
                             background-color: #fff;
                           "
                           class="q-pa-sm"
@@ -385,5 +386,8 @@ export default {
 .custom-link {
   color: black;
   text-decoration: none;
+}
+.scroll--mobile{
+  overflow-x: auto;
 }
 </style>
